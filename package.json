@@ -1,0 +1,21 @@
+{
+  "name": "validatoo",
+  "version": "0.0.1",
+  "description": "validate an complex object based on a schema",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape t/*.js",
+    "testling": "browserify t/*.js | testling"
+  },
+  "keywords": [
+    "validate","validator","schema"
+  ],
+  "author": "ishiduca@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^3.5.0"
+  },
+  "dependencies": {
+    "lodash": "^3.6.0"
+  }
+}
