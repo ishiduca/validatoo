@@ -22,7 +22,7 @@ var s = schema({
 })
 
 try {
-    s({required: 3.14'})
+    s({required: 3.14})
 } catch (err) {
     // "required" key is required and must be an "Interger"
 }
