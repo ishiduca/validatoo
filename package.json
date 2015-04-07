@@ -1,6 +1,6 @@
 {
   "name": "validatoo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a tool to validate an nested object. (based on schema)",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,9 @@
   },
   "dependencies": {
     "lodash": "^3.6.0"
+  },
+  "repository": {
+    "type": "git",
+	"url": "git://github.com/ishiduca/validatoo.git"
   }
 }
