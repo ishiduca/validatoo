@@ -41,8 +41,8 @@ try {
 
 return a validated function
 
-* **RegExpOrFunc** __RegExp__ |  __function__ in order to validate
-* **errorMessage** __String__ error message
+* **RegExpOrFunc** __RegExp__ | __function__ in order to validate
+* **errorMessage** __String__ | __function__ error message
 
 ```js
 var validate = validatoo.validator({

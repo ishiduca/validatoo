@@ -5,7 +5,19 @@ function validator (tester, _errMsg) {
     var test = 'function' === typeof tester.test ? lodash.bind(tester.test, tester) : tester
     return function validate (query) {
         if (test(query)) return true
-        var err = new Error(_errMsg || 'validate fail')
+
+        var err
+        if ('function' === typeof _errMsg) {
+            var _err = _errMsg(query)
+            if (_err instanceof Error) {
+                throw _err
+            } else {
+                err = new Error(_err)
+            }
+        } else {
+            err = new Error(_errMsg || 'validate fail')
+        }
+
         err.name = 'ValidateError'
         throw err
     }
