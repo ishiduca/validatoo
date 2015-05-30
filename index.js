@@ -7,6 +7,7 @@ function validator (tester, _errMsg) {
         if (test(query)) return true
 
         var err
+
         if ('function' === typeof _errMsg) {
             var _err = _errMsg(query)
             if (_err instanceof Error) {
