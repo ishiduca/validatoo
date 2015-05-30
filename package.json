@@ -1,6 +1,6 @@
 {
   "name": "validatoo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a tool to validate an nested object. (based on schema)",
   "main": "index.js",
   "scripts": {
