@@ -1,6 +1,6 @@
 {
   "name": "validatoo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "a tool to validate an nested object. (based on schema)",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,9 @@
     "testling": "browserify t/*.js | testling"
   },
   "keywords": [
-    "validate","validator","schema"
+    "validate",
+    "validator",
+    "schema"
   ],
   "author": "ishiduca@gmail.com",
   "license": "MIT",
@@ -16,10 +18,11 @@
     "tape": "^3.5.0"
   },
   "dependencies": {
-    "lodash": "^3.6.0"
+    "array-reduce": "0.0.0",
+    "component-bind": "^1.0.0"
   },
   "repository": {
     "type": "git",
-	"url": "git://github.com/ishiduca/validatoo.git"
+    "url": "git://github.com/ishiduca/validatoo.git"
   }
 }

@@ -1,8 +1,9 @@
 'use strict'
-var lodash = require('lodash')
+var reduce = require('array-reduce')
+var bind   = require('component-bind')
 
 function validator (tester, _errMsg) {
-    var test = 'function' === typeof tester.test ? lodash.bind(tester.test, tester) : tester
+    var test = 'function' === typeof tester.test ? bind(tester, tester.test) : tester
     return function validate (query) {
         if (test(query)) return true
 
@@ -28,14 +29,14 @@ function createSchema (requires, options) {
     var reqKeys = Object.keys(requires || (requires = {}))
     var optKeys = Object.keys(options  || (options  = {}))
 
-    var reqs = lodash.reduce(reqKeys, function (reqs, key) {
+    var reqs = reduce(reqKeys, function (reqs, key) {
         reqs[key] = 'function' === typeof requires[key]
                   ? requires[key]
                   : validator.apply(null, requires[key])
         return reqs
     }, {})
 
-    var opts = lodash.reduce(optKeys, function (opts, key) {
+    var opts = reduce(optKeys, function (opts, key) {
         opts[key] = 'function' === typeof options[key]
                   ? options[key]
                   : validator.apply(null, options[key])
@@ -51,7 +52,7 @@ function createSchema (requires, options) {
 
         var mixedKeys = reqKeys.concat(optKeys)
 
-        lodash.forEach(Object.keys(query), function (key) {
+        Object.keys(query).forEach(function (key) {
             if (mixedKeys.indexOf(key) === -1) {
                 var err = new Error('key "' + key + '" un required')
                 err.name = 'SchemaUnRequiredKeyError'
@@ -59,7 +60,7 @@ function createSchema (requires, options) {
             }
         })
 
-        lodash.forEach(reqKeys, function (key) {
+        reqKeys.forEach(function (key) {
             if (!(key in query)) {
                 var err = new Error('required key "' + key +'" not found')
                 err.name = 'SchemaRequiredKeyNotFoundError'
@@ -69,7 +70,7 @@ function createSchema (requires, options) {
             reqs[key](query[key])
         })
 
-        lodash.forEach(optKeys, function (key) {
+        optKeys.forEach(function (key) {
             if (key in query) opts[key](query[key])
         })
 
